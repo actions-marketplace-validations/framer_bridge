@@ -1,9 +1,16 @@
-workflow "Publish" {
-  resolves = ["Publish Framer Package"]
+workflow "Build and Publish" {
   on = "push"
+  resolves = "Publish"
 }
 
-action "Publish Framer Package" {
+action "Build" {
   uses = "./.github/framer"
+  args = ["build", "--yes"]
+}
+
+action "Publish" {
+  uses = "./.github/framer"
+  args = ["publish", "--yes"]
+  requires = ["Build"]
   secrets = ["FRAMER_TOKEN"]
 }
