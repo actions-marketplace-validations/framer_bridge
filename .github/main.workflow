@@ -11,6 +11,6 @@ action "Build" {
 action "Publish" {
   uses = "./.github/framer"
   args = ["publish", "--yes"]
-  requires = ["Build"]
+  needs = ["Build"]
   secrets = ["FRAMER_TOKEN"]
 }
