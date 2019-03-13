@@ -1,9 +1,9 @@
-workflow "publish-to-private-store" {
-  resolves = ["yarn-publish"]
+workflow "Publish" {
+  resolves = ["Publish Framer Package"]
   on = "push"
 }
 
-action "yarn-publish" {
-  uses = "./.github/registry"
-  secrets = ["NPM_AUTH_TOKEN"]
+action "Publish Framer Package" {
+  uses = "./.github/framer"
+  secrets = ["FRAMER_TOKEN"]
 }
