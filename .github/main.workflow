@@ -5,7 +5,7 @@ workflow "Build and Publish" {
 
 action "Build" {
   uses = "./.github/framer"
-  args = ["build", "--yes"]
+  args = ["build"]
 }
 
 action "Publish" {
