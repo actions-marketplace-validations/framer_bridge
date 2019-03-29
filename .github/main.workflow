@@ -8,9 +8,15 @@ action "Build" {
   args = ["build"]
 }
 
+action "Publish Filter" {
+  needs = ["Build"]
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
 action "Publish" {
   uses = "./.github/framer"
   args = ["publish", "--yes"]
-  needs = ["Build"]
+  needs = ["Build", "Publish Filter"]
   secrets = ["FRAMER_TOKEN"]
 }
