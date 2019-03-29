@@ -6,5 +6,7 @@ LABEL com.github.actions.color="gray-dark"
 
 RUN apk update && apk add jq && rm -rf /var/cache/apk/*
 
+RUN yarn global add framer-cli
+
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
