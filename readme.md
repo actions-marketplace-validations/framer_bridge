@@ -7,7 +7,7 @@ This Action is a wrapper for the [Framer CLI](https://www.npmjs.com/package/fram
 ```workflow
 action "Build" {
    uses = "framer/actions/bridge@master"
-   args = ["build", <your-project-path.framerfx>]
+   args = ["build", "<your-project-path.framerfx>"]
  }
 
  action "Publish" {
