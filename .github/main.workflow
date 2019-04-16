@@ -4,7 +4,7 @@ workflow "Build and Publish" {
 }
 
 action "Build" {
-  uses = "./.github/framer"
+  uses = "framer/PublishAction@master"
   args = ["build"]
 }
 
