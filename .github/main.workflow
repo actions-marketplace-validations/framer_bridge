@@ -1,22 +1,14 @@
-workflow "Build and Publish" {
+workflow "Run checks" {
   on = "push"
-  resolves = "Publish"
+  resolves = ["ShellCheck", "Dockerfilelint"]
 }
 
-action "Build" {
-  uses = "./.github/framer"
-  args = ["build"]
+action "ShellCheck" {
+  uses = "actions/bin/shellcheck@master"
+  args = "bridge/entrypoint.sh"
 }
 
-action "Publish Filter" {
-  needs = ["Build"]
-  uses = "actions/bin/filter@master"
-  args = "branch master"
-}
-
-action "Publish" {
-  uses = "./.github/framer"
-  args = ["publish", "--yes"]
-  needs = ["Build", "Publish Filter"]
-  secrets = ["FRAMER_TOKEN"]
+action "Dockerfilelint" {
+  uses = "docker://replicated/dockerfilelint"
+  args = ["bridge/Dockerfile"]
 }
