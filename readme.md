@@ -12,7 +12,7 @@ action "Build" {
 
  action "Publish" {
    uses = "framer/actions/bridge@master"
-   args = ["publish", <your-project-path.framerfx>, "--yes"]
+   args = ["publish", "<your-project-path.framerfx>", "--yes"]
    needs = ["Build"]
    secrets = ["FRAMER_TOKEN"]
 }
