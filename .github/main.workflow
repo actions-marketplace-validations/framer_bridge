@@ -5,10 +5,10 @@ workflow "Run checks" {
 
 action "ShellCheck" {
   uses = "actions/bin/shellcheck@master"
-  args = "bridge/entrypoint.sh"
+  args = "entrypoint.sh"
 }
 
 action "Dockerfilelint" {
   uses = "docker://replicated/dockerfilelint"
-  args = ["bridge/Dockerfile"]
+  args = ["Dockerfile"]
 }
