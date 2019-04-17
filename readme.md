@@ -6,12 +6,12 @@ This Action is a wrapper for the [Framer CLI](https://www.npmjs.com/package/fram
 
 ```workflow
 action "Build" {
-   uses = "framer/actions/bridge@master"
+   uses = "framer/bridge@master"
    args = ["build", "<your-project-path.framerfx>"]
  }
 
  action "Publish" {
-   uses = "framer/actions/bridge@master"
+   uses = "framer/bridge@master"
    args = ["publish", "<your-project-path.framerfx>", "--yes"]
    needs = ["Build"]
    secrets = ["FRAMER_TOKEN"]
