@@ -1,0 +1,18 @@
+---
+on: push
+name: Lint
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Dockerfilelint
+        uses: docker://replicated/dockerfilelint
+        with:
+          args: Dockerfile
+
+      - name: ShellCheck
+        uses: actions/bin/shellcheck@master
+        with:
+          args: entrypoint.sh
