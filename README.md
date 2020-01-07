@@ -4,18 +4,27 @@ This Action is a wrapper for the [Framer CLI](https://www.npmjs.com/package/fram
 
 ## Usage
 
-```workflow
-action "Build" {
-   uses = "framer/bridge@master"
-   args = ["build", "<your-project-path.framerfx>"]
- }
+```yaml
+---
+on: push
+name: Build and publish
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
 
- action "Publish" {
-   uses = "framer/bridge@master"
-   args = ["publish", "<your-project-path.framerfx>", "--yes"]
-   needs = ["Build"]
-   secrets = ["FRAMER_TOKEN"]
-}
+      - name: Build
+        uses: framer/bridge@master
+        with:
+          args: build <your-project-path.framerx>
+
+      - name: Publish
+        uses: framer/bridge@master
+        env:
+          FRAMER_TOKEN: ${{ secrets.FRAMER_TOKEN }}
+        with:
+          args: publish <your-project-path.framerfx> --yes
 ```
 
 ### Secrets
