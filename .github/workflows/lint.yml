@@ -13,6 +13,4 @@ jobs:
           args: Dockerfile
 
       - name: ShellCheck
-        uses: actions/bin/shellcheck@master
-        with:
-          args: entrypoint.sh
+        run: shellcheck entrypoint.sh
